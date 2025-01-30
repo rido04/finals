@@ -276,30 +276,128 @@ $jumlahHalaman = ceil($totalData / $jumlahDataPerHalaman);
         
         <?php endif; ?>
         
-        <!-- Hasil rekap Data -->
-        <?php if (!empty($rekapData)): ?>
-            <h2>Hasil Rekap Data</h2>
-            <table border="1" cellpadding="10" cellspacing="1">
+       <!-- Hasil Rekap Data -->
+<?php if (!empty($rekapData)): ?>
+    <h2>Hasil Rekap Data</h2>
+    <div style="overflow-x: auto; margin-bottom: 20px; border: 1px solid #ccc; padding: 10px;">
+        <table border="1" cellpadding="10" cellspacing="1" style="min-width: 1500px; border-collapse: collapse;">
+            <thead>
                 <tr>
                     <th>No</th>
                     <th>List Admin</th>
-                    <th>Pelayanan</th>
-                    <th>Tanggal</th>
-                    <th>Jam</th>
+                    <th>Komplain</th>
+                    <th>Informasi</th>
+                    <th>Perijinan</th>
+                    <th>Renovasi & Canopy</th>
+                    <th>Insentive Huni & Voucher</th>
+                    <th>Member Club</th>
+                    <th>Access Card</th>
+                    <th>SSC</th>
+                    <th>Kwitansi IPL</th>
+                    <th>Kwitansi PAM</th>
+                    <th>PBB</th>
                 </tr>
-                <?php $i = $awalData + 1; ?>
-                <?php foreach ($rekapData as $data): ?>
+            </thead>
+            <tbody>
+                <?php 
+                $processedTables = [];
+                $i = 1;
+
+                // Total keseluruhan
+                $grandTotal = [
+                    "Komplain" => 0,
+                    "Informasi" => 0,
+                    "Perijinan" => 0,
+                    "Renovasi & Canopy" => 0,
+                    "Insentive Huni & Voucher" => 0,
+                    "Member Club" => 0,
+                    "Access Card" => 0,
+                    "SSC" => 0,
+                    "Kwitansi IPL" => 0,
+                    "Kwitansi PAM" => 0,
+                    "PBB" => 0,
+                ];
+
+                foreach ($rekapData as $data): 
+                    if (in_array($data["table_name"], $processedTables)) {
+                        continue;
+                    }
+                    $processedTables[] = $data["table_name"];
+
+                    // Hitung total untuk tabel ini
+                    $totalKomplain = $totalInformasi = $totalPerijinan = $totalRenovasi = 0;
+                    $totalInsentive = $totalMemberClub = $totalAccessCard = 0;
+                    $totalSSC = $totalKwitansiIPL = $totalKwitansiPAM = $totalPBB = 0;
+
+                    foreach ($rekapData as $item) {
+                        if ($item["table_name"] == $data["table_name"]) {
+                            switch ($item["jenis_pelayanan"]) {
+                                case "Komplain": $totalKomplain++; break;
+                                case "Informasi": $totalInformasi++; break;
+                                case "Perijinan": $totalPerijinan++; break;
+                                case "Renovasi & Canopy": $totalRenovasi++; break;
+                                case "Insentive Huni & Voucher": $totalInsentive++; break;
+                                case "Member Club": $totalMemberClub++; break;
+                                case "Access Card": $totalAccessCard++; break;
+                                case "SSC": $totalSSC++; break;
+                                case "Kwitansi IPL": $totalKwitansiIPL++; break;
+                                case "Kwitansi PAM": $totalKwitansiPAM++; break;
+                                case "PBB": $totalPBB++; break;
+                            }
+                        }
+                    }
+
+                    // Tambahkan ke total keseluruhan
+                    $grandTotal["Komplain"] += $totalKomplain;
+                    $grandTotal["Informasi"] += $totalInformasi;
+                    $grandTotal["Perijinan"] += $totalPerijinan;
+                    $grandTotal["Renovasi & Canopy"] += $totalRenovasi;
+                    $grandTotal["Insentive Huni & Voucher"] += $totalInsentive;
+                    $grandTotal["Member Club"] += $totalMemberClub;
+                    $grandTotal["Access Card"] += $totalAccessCard;
+                    $grandTotal["SSC"] += $totalSSC;
+                    $grandTotal["Kwitansi IPL"] += $totalKwitansiIPL;
+                    $grandTotal["Kwitansi PAM"] += $totalKwitansiPAM;
+                    $grandTotal["PBB"] += $totalPBB;
+                ?>
                     <tr>
                         <td><?= $i; ?></td>
                         <td><?= htmlspecialchars($data["table_name"]); ?></td>
-                        <td><?= htmlspecialchars($data["jenis_pelayanan"]); ?></td>
-                        <td><?= htmlspecialchars($data["tanggal"]); ?></td>
-                        <td><?= htmlspecialchars($data["jam"]); ?></td>
+                        <td><?= $totalKomplain; ?></td>
+                        <td><?= $totalInformasi; ?></td>
+                        <td><?= $totalPerijinan; ?></td>
+                        <td><?= $totalRenovasi; ?></td>
+                        <td><?= $totalInsentive; ?></td>
+                        <td><?= $totalMemberClub; ?></td>
+                        <td><?= $totalAccessCard; ?></td>
+                        <td><?= $totalSSC; ?></td>
+                        <td><?= $totalKwitansiIPL; ?></td>
+                        <td><?= $totalKwitansiPAM; ?></td>
+                        <td><?= $totalPBB; ?></td>
                     </tr>
                     <?php $i++; ?>
                 <?php endforeach; ?>
-            </table>
-        <?php endif; ?>
+            </tbody>
+            <tfoot>
+                <tr style="font-weight: bold;">
+                    <td colspan="2" style="text-align: center;">Jumlah Total</td>
+                    <td><?= $grandTotal["Komplain"]; ?></td>
+                    <td><?= $grandTotal["Informasi"]; ?></td>
+                    <td><?= $grandTotal["Perijinan"]; ?></td>
+                    <td><?= $grandTotal["Renovasi & Canopy"]; ?></td>
+                    <td><?= $grandTotal["Insentive Huni & Voucher"]; ?></td>
+                    <td><?= $grandTotal["Member Club"]; ?></td>
+                    <td><?= $grandTotal["Access Card"]; ?></td>
+                    <td><?= $grandTotal["SSC"]; ?></td>
+                    <td><?= $grandTotal["Kwitansi IPL"]; ?></td>
+                    <td><?= $grandTotal["Kwitansi PAM"]; ?></td>
+                    <td><?= $grandTotal["PBB"]; ?></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+<?php endif; ?>
+
     </div>
 </body>
 </html>

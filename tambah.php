@@ -77,6 +77,28 @@ foreach ($dataHasilPencarian as $row) {
             <br>
             <button type="submit" name="input">Simpan</button>
         </form>
+        <?php
+// Pastikan username tersedia di sesi
+if (!isset($_SESSION['username'])) {
+    echo "Session tidak valid. Silakan login kembali.";
+    exit;
+}
+
+// Ambil username dari sesi dan hapus spasi
+$username = strtolower(str_replace(' ', '', trim($_SESSION['username']))); // Format: admin1
+
+// Tentukan halaman landing
+$landingPage = $username . "_landing.php"; // Format: admin1_landing.php
+
+// Cek apakah file landing page ada
+if (!file_exists($landingPage)) {
+    echo "Halaman landing tidak ditemukan: " . htmlspecialchars($landingPage);
+    exit;
+}
+
+// Tampilkan tombol kembali
+echo '<button class="oren" onclick="window.location.href=\'' . $landingPage . '\'">Kembali</button>';
+?>
 
         <!-- Tabel Data -->
         <h1>Data Hari Ini (<?= date("d-m-Y"); ?>)</h1>
