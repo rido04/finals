@@ -1,0 +1,263 @@
+/* Reset CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f8f9fa; /* Warna latar belakang yang netral */
+  color: #495057; /* Warna teks */
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+/* Memusatkan elemen form */
+#login {
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-top: 6%;
+  max-height: 500px;
+}
+#btnlgn {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#btnlndg {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
+
+#landing {
+  margin-top: 12%;
+  max-height: 500px;
+}
+
+.oren {
+  background-color: orange;
+  cursor: pointer;
+}
+
+.oren:hover {
+  background-color: rgb(179, 116, 0);
+}
+
+p {
+  display: flex;
+  justify-content: center;
+}
+
+form {
+  box-sizing: border-box;
+  box-shadow: 10px 0 0 10px rgba(0, 0, 0, 0);
+  border: 2px solid grey;
+  border-radius: 20px;
+  padding: 20px;
+  width: 50%; /* Mengatur lebar form */
+  max-width: 500px; /* Mengatur lebar maksimum form */
+  margin: 0 auto; /* Mengatur margin otomatis untuk memusatkan */
+}
+/* Heading */
+h1,
+h2,
+h3,
+h4 {
+  color: #dc3545; /* Merah */
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+ul li {
+  text-decoration: none;
+}
+
+/* Link */
+a {
+  color: rgb(255, 255, 255); /* Kuning */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Button */
+.back {
+  background-color: #dc3545;
+  font-color: white;
+}
+
+.back:hover {
+  background-color: rgb(117, 29, 37);
+}
+
+.logout {
+  background-color: #dc3545;
+  font-color: white;
+}
+
+.logout:hover {
+  background-color: rgb(117, 29, 37);
+}
+
+.logoutLanding {
+  background-color: #dc3545;
+  font-color: white;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.logoutLanding:hover {
+  background-color: rgb(117, 29, 37);
+}
+.aksi {
+  color: white;
+}
+
+/* .landing {
+    text-decoration: none;
+  color: white;
+} */
+
+.login {
+  width: 100%;
+}
+
+button {
+  background-color: rgb(19, 168, 51);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: rgb(11, 66, 14); /* Hijau lebih gelap */
+}
+
+/* Alert Box */
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 5px;
+}
+
+.alert-success {
+  color: #155724; /* Hijau */
+  background-color: #d4edda; /* Hijau muda */
+  border-color: #c3e6cb; /* Hijau muda border */
+}
+
+.alert-warning {
+  color: #856404; /* Oranye */
+  background-color: #fff3cd; /* Oranye muda */
+  border-color: #ffeeba; /* Oranye muda border */
+}
+
+.alert-danger {
+  color: #721c24; /* Merah */
+  background-color: #f8d7da; /* Merah muda */
+  border-color: #f5c6cb; /* Merah muda border */
+}
+
+/* Form */
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="time"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #007bff; /* Biru */
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solidrgb(0, 0, 0);
+}
+
+th {
+  background-color: rgb(209, 198, 40); /* Merah */
+  color: white;
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Warna latar belakang saat hover */
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination a {
+  color: #007bff; /* Biru */
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #007bff;
+  margin: 0 5px;
+  border-radius: 5px;
+}
+
+.pagination a:hover {
+  background-color: #007bff; /* Biru */
+  color: white;
+}
+ul {
+  list-style-type: none; /* Menghapus titik pada list */
+  padding: 0; /* Menghapus padding default */
+  margin: 0; /* Menghapus margin default */
+}
+
+ul li {
+  text-decoration: none;
+  /* Ini tidak berpengaruh pada bullet, hanya untuk teks */
+}
+ul {
+  list-style-type: none; /* Menghapus titik pada list */
+  padding: 0; /* Menghapus padding default */
+  margin: 0; /* Menghapus margin default */
+}
+
+ul li {
+  text-decoration: none; /* Ini tidak berpengaruh pada bullet, hanya untuk teks */
+}
+
+.ekspor {
+  border: 0px;
+  display: flex;
+  justify-content: center;
+}
